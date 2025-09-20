@@ -30,14 +30,14 @@ export default function EventsIndex() {
   return (
     <Layout title="競技スケジュール">
       {events.length === 0 ? (
-        <div className="card text-center">
-          <p className="text-gray-600">競技スケジュールの取得に失敗しました。</p>
+        <div className="bg-white/80 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center shadow-md">
+          <p className="text-gray-700 text-sm">競技スケジュールの取得に失敗しました。</p>
         </div>
       ) : (
-        <div className="card">
+        <div className="bg-white/80 backdrop-blur-sm border border-white/20 rounded-lg overflow-hidden shadow-md">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead className="bg-blue-50/70 backdrop-blur-sm">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     競技名
@@ -60,7 +60,7 @@ export default function EventsIndex() {
                 {events.map((event: Event) => {
                   const { date, time } = formatDateTime(event.schedule_time);
                   return (
-                    <tr key={event.id} className="hover:bg-gray-50">
+                    <tr key={event.id} className="hover:bg-gray-50 transition-colors">
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                         {event.name}
                       </td>
@@ -73,10 +73,10 @@ export default function EventsIndex() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {event.location}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600">
-                        <Link 
+                      <td className="px-6 py-4 whitespace-nowrap text-sm">
+                        <Link
                           to={`/tournaments/${event.id}`}
-                          className="hover:underline"
+                          className="text-blue-600 hover:text-blue-800 hover:underline transition-colors"
                         >
                           トーナメント表 →
                         </Link>

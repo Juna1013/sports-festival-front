@@ -1,5 +1,5 @@
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'postgresql://admin:plwbPNN7U40O0GXBtcqNAKCkdFXY4Vi0@dpg-d37a40ogjchc73c3qn0g-a/sportsdb_t8bw' // 後でRenderのURLに置き換え
+  ? 'https://sports-festival-api.onrender.com'
   : 'http://localhost:3001';
 
 export interface Event {

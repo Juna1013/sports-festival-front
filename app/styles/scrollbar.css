@@ -1,0 +1,36 @@
+/* Hide scrollbar completely for sports galleries */
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Infinite scroll animation setup */
+.scroll-container {
+  animation-play-state: paused;
+}
+
+.scroll-container:hover {
+  animation-play-state: running;
+}
+
+/* Auto-scroll animation for sports galleries */
+@keyframes scroll-loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.auto-scroll {
+  animation: scroll-loop 20s linear infinite;
+}
+
+.auto-scroll:hover {
+  animation-play-state: paused;
+}

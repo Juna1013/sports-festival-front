@@ -1,0 +1,29 @@
+/* app/styles/scrollbar.css */
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+.scroll-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-container {
+  animation-play-state: paused;
+}
+.scroll-container:hover {
+  animation-play-state: running;
+}
+@keyframes scroll-loop {
+  0% {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-50%);
+  }
+}
+.auto-scroll {
+  animation: scroll-loop 20s linear infinite;
+}
+.auto-scroll:hover {
+  animation-play-state: paused;
+}
+/*# sourceMappingURL=/build/_assets/scrollbar-T3BY4GJR.css.map */

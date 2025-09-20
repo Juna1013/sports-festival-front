@@ -9,9 +9,11 @@ import {
 import type { LinksFunction } from "@remix-run/node";
 
 import stylesheet from "./tailwind.css?url";
+import scrollbarStyles from "./styles/scrollbar.css?url";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
+  { rel: "stylesheet", href: scrollbarStyles },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",

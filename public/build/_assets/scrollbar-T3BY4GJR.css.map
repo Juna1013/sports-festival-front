@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../app/styles/scrollbar.css"],
+  "sourcesContent": ["/* Hide scrollbar completely for sports galleries */\n.scroll-container::-webkit-scrollbar {\n  display: none;\n}\n\n.scroll-container {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n}\n\n/* Infinite scroll animation setup */\n.scroll-container {\n  animation-play-state: paused;\n}\n\n.scroll-container:hover {\n  animation-play-state: running;\n}\n\n/* Auto-scroll animation for sports galleries */\n@keyframes scroll-loop {\n  0% {\n    transform: translateX(0);\n  }\n  100% {\n    transform: translateX(-50%);\n  }\n}\n\n.auto-scroll {\n  animation: scroll-loop 20s linear infinite;\n}\n\n.auto-scroll:hover {\n  animation-play-state: paused;\n}"],
+  "mappings": ";AACA;AACE;;AAGF;AACE;AACA;;AAIF;AACE;;AAGF;AACE;;AAIF;;AAEI;;;AAGA;;;AAIJ;AACE;;AAGF;AACE;;",
+  "names": []
+}

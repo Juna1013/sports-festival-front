@@ -36,7 +36,7 @@ export default function TournamentPage() {
 
   const renderMatch = (tournament: Tournament) => {
     return (
-      <div key={tournament.id} className="bg-white/80 backdrop-blur-sm border border-white/20 rounded-lg p-4 hover:shadow-lg hover:bg-white/90 transition-all duration-300">
+      <div key={tournament.id} className="bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl p-4 shadow-lg hover:shadow-xl hover:bg-white hover:-translate-y-1 transition-all duration-300 transform">
         <div className="text-sm font-medium text-gray-600 mb-3">
           {tournament.round}
         </div>
@@ -87,14 +87,14 @@ export default function TournamentPage() {
       <div className="mb-6">
         <Link
           to="/events"
-          className="text-blue-600 hover:text-blue-800 text-sm hover:underline transition-colors"
+          className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
         >
           ← 競技スケジュールに戻る
         </Link>
       </div>
 
       {tournaments.length === 0 ? (
-        <div className="bg-white/80 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center shadow-md">
+        <div className="bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl p-6 text-center shadow-xl">
           <p className="text-gray-700 text-sm">この競技のトーナメント情報はありません。</p>
         </div>
       ) : (
@@ -103,7 +103,7 @@ export default function TournamentPage() {
         </div>
       )}
 
-      <div className="bg-white/80 backdrop-blur-sm border border-white/20 rounded-lg p-6 shadow-md">
+      <div className="bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl p-6 shadow-xl">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">説明</h3>
         <ul className="space-y-2">
           <li className="flex items-start text-sm text-gray-700">

@@ -30,11 +30,11 @@ export default function EventsIndex() {
   return (
     <Layout title="競技スケジュール">
       {events.length === 0 ? (
-        <div className="bg-white/80 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center shadow-md">
+        <div className="bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl p-6 text-center shadow-xl">
           <p className="text-gray-700 text-sm">競技スケジュールの取得に失敗しました。</p>
         </div>
       ) : (
-        <div className="bg-white/80 backdrop-blur-sm border border-white/20 rounded-lg overflow-hidden shadow-md">
+        <div className="bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl overflow-hidden shadow-xl">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-blue-50/70 backdrop-blur-sm">
@@ -76,7 +76,7 @@ export default function EventsIndex() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm">
                         <Link
                           to={`/tournaments/${event.id}`}
-                          className="text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+                          className="inline-flex items-center px-3 py-1 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 rounded-md transition-all duration-300 shadow-md hover:shadow-lg"
                         >
                           トーナメント表 →
                         </Link>

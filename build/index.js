@@ -131,7 +131,7 @@ import {
 } from "@remix-run/react";
 
 // app/tailwind.css?url
-var tailwind_default = "/build/_assets/tailwind-LFPCUADA.css?url";
+var tailwind_default = "/build/_assets/tailwind-HSY4RLIF.css?url";
 
 // app/styles/scrollbar.css?url
 var scrollbar_default = "/build/_assets/scrollbar-XF5ECMNF.css?url";
@@ -925,57 +925,79 @@ function EventsIndex() {
 // app/routes/_index.tsx
 var index_exports = {};
 __export(index_exports, {
-  default: () => Index
+  default: () => Index,
+  loader: () => loader3
 });
-import { Link as Link5 } from "@remix-run/react";
+import { useLoaderData as useLoaderData3, Link as Link5 } from "@remix-run/react";
 import { jsxDEV as jsxDEV8 } from "react/jsx-dev-runtime";
+async function loader3() {
+  try {
+    let events = await fetchEvents(), ballSports = events.filter((event) => event.id <= 5), trackEvents = events.filter((event) => event.id >= 6);
+    return { ballSports, trackEvents };
+  } catch (error) {
+    return console.error("Error loading events:", error), { ballSports: [], trackEvents: [] };
+  }
+}
 function Index() {
+  let { ballSports, trackEvents } = useLoaderData3(), getSportIcon = (name) => ({
+    \u30D0\u30B9\u30B1\u30C3\u30C8\u30DC\u30FC\u30EB: "sports_basketball",
+    \u30D0\u30EC\u30FC\u30DC\u30FC\u30EB: "sports_volleyball",
+    \u30BD\u30D5\u30C8\u30DC\u30FC\u30EB: "sports_baseball",
+    \u30B5\u30C3\u30AB\u30FC: "sports_soccer",
+    \u30BD\u30D5\u30C8\u30C6\u30CB\u30B9: "sports_tennis",
+    \u969C\u5BB3\u7269\u7AF6\u8D70: "directions_run",
+    \u5927\u30EA\u30EC\u30FC: "group_work",
+    \u501F\u308A\u4EBA\u7AF6\u4E89: "search",
+    "\u25CB\u4EBA\xD7\u811A": "group",
+    \u5927\u7DB1\u5F15\u304D: "fitness_center",
+    \u30D1\u30F3\u98DF\u3044\u7AF6\u4E89: "restaurant"
+  })[name] || "sports";
   return /* @__PURE__ */ jsxDEV8(Layout, { title: "", children: [
     /* @__PURE__ */ jsxDEV8("div", { className: "relative w-full h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 mb-6 md:mb-8 rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl", children: /* @__PURE__ */ jsxDEV8("div", { className: "absolute inset-0 bg-gradient-to-br from-blue-400 via-sky-300 to-cyan-200 flex items-center justify-center px-4", children: /* @__PURE__ */ jsxDEV8("div", { className: "text-center text-white max-w-md", children: [
       /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-2 md:mb-4 opacity-80", children: "school" }, void 0, !1, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 12,
+        lineNumber: 44,
         columnNumber: 13
       }, this),
       /* @__PURE__ */ jsxDEV8("p", { className: "text-base sm:text-lg md:text-xl lg:text-2xl font-semibold opacity-90 mb-1 md:mb-2", children: "\u6821\u5EAD\u306E\u5199\u771F\u304C\u3053\u3053\u306B\u5165\u308A\u307E\u3059" }, void 0, !1, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 15,
+        lineNumber: 47,
         columnNumber: 13
       }, this),
       /* @__PURE__ */ jsxDEV8("p", { className: "text-xs sm:text-sm md:text-base opacity-70 px-2", children: "\u753B\u50CF\u3092\u8FFD\u52A0\u3059\u308B\u3068\u3053\u306E\u30D7\u30EC\u30FC\u30B9\u30DB\u30EB\u30C0\u30FC\u304C\u7F6E\u304D\u63DB\u308F\u308A\u307E\u3059" }, void 0, !1, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 18,
+        lineNumber: 50,
         columnNumber: 13
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/_index.tsx",
-      lineNumber: 11,
+      lineNumber: 43,
       columnNumber: 11
     }, this) }, void 0, !1, {
       fileName: "app/routes/_index.tsx",
-      lineNumber: 10,
+      lineNumber: 42,
       columnNumber: 9
     }, this) }, void 0, !1, {
       fileName: "app/routes/_index.tsx",
-      lineNumber: 8,
+      lineNumber: 40,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ jsxDEV8("div", { className: "w-full mb-6 md:mb-8", children: /* @__PURE__ */ jsxDEV8("div", { className: "bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl p-4 md:p-6 shadow-xl hover:shadow-2xl hover:bg-white hover:-translate-y-1 transition-all duration-300 transform", children: [
       /* @__PURE__ */ jsxDEV8("h2", { className: "flex items-center text-lg md:text-xl font-semibold text-gray-900 mb-3", children: [
         /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-xl md:text-2xl mr-2 md:mr-3 text-blue-600 drop-shadow-sm", children: "schedule" }, void 0, !1, {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 46,
+          lineNumber: 78,
           columnNumber: 13
         }, this),
         "\u7AF6\u6280\u30B9\u30B1\u30B8\u30E5\u30FC\u30EB"
       ] }, void 0, !0, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 45,
+        lineNumber: 77,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ jsxDEV8("p", { className: "text-gray-700 mb-4 md:mb-6 text-xs md:text-sm leading-relaxed", children: "\u5404\u7AF6\u6280\u306E\u958B\u59CB\u6642\u9593\u3068\u958B\u50AC\u5834\u6240\u3092\u78BA\u8A8D\u3067\u304D\u307E\u3059\u3002" }, void 0, !1, {
+      /* @__PURE__ */ jsxDEV8("p", { className: "text-gray-700 mb-4 md:mb-6 text-xs md:text-sm leading-relaxed", children: "\u5404\u7AF6\u6280\u306E\u958B\u59CB\u6642\u9593\u3068\u958B\u50AC\u5834\u6240\u3092\u78BA\u8A8D\u3067\u304D\u307E\u3059\u3002\u4E0B\u8A18\u306E\u7403\u6280\u30FB\u7AF6\u6280\u30BF\u30A4\u30EB\u304B\u3089\u3082\u76F4\u63A5\u30C8\u30FC\u30CA\u30E1\u30F3\u30C8\u8868\u306B\u30A2\u30AF\u30BB\u30B9\u3067\u304D\u307E\u3059\u3002" }, void 0, !1, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 49,
+        lineNumber: 81,
         columnNumber: 11
       }, this),
       /* @__PURE__ */ jsxDEV8(
@@ -989,379 +1011,367 @@ function Index() {
         !1,
         {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 52,
+          lineNumber: 84,
           columnNumber: 11
         },
         this
       )
     ] }, void 0, !0, {
       fileName: "app/routes/_index.tsx",
-      lineNumber: 44,
+      lineNumber: 76,
       columnNumber: 9
     }, this) }, void 0, !1, {
       fileName: "app/routes/_index.tsx",
-      lineNumber: 43,
+      lineNumber: 75,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ jsxDEV8("div", { "data-section": "sports-ball", className: "bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl p-6 shadow-xl mb-8", children: [
       /* @__PURE__ */ jsxDEV8("h2", { className: "flex items-center text-xl font-semibold text-gray-900 mb-6", children: [
         /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-2xl mr-3 text-amber-600 drop-shadow-sm", children: "sports_basketball" }, void 0, !1, {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 64,
+          lineNumber: 96,
           columnNumber: 11
         }, this),
         "\u7403\u6280\u7A2E\u76EE"
       ] }, void 0, !0, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 63,
+        lineNumber: 95,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ jsxDEV8("div", { className: "relative overflow-hidden", children: /* @__PURE__ */ jsxDEV8("div", { className: "flex gap-3 md:gap-4 scroll-container auto-scroll", children: [...Array(2)].map(
-        (_, arrayIndex) => [
-          { name: "\u30D0\u30B9\u30B1\u30C3\u30C8\u30DC\u30FC\u30EB", description: "\u30C1\u30FC\u30E0\u6226\u3067\u306E\u71B1\u3044\u6226\u3044\u304C\u7E70\u308A\u5E83\u3052\u3089\u308C\u307E\u3059", icon: "sports_basketball" },
-          { name: "\u30B5\u30C3\u30AB\u30FC", description: "\u30B0\u30E9\u30A6\u30F3\u30C9\u3092\u99C6\u3051\u629C\u3051\u308B\u767D\u71B1\u3057\u305F\u8A66\u5408", icon: "sports_soccer" },
-          { name: "\u30D0\u30EC\u30FC\u30DC\u30FC\u30EB", description: "\u30CD\u30C3\u30C8\u3092\u631F\u3093\u3067\u306E\u30D1\u30EF\u30D5\u30EB\u306A\u653B\u9632", icon: "sports_volleyball" },
-          { name: "\u30C9\u30C3\u30B8\u30DC\u30FC\u30EB", description: "\u4FCA\u654F\u6027\u3068\u6226\u7565\u304C\u6C42\u3081\u3089\u308C\u308B\u4EBA\u6C17\u7AF6\u6280", icon: "sports_handball" },
-          { name: "\u30C6\u30CB\u30B9", description: "\u500B\u4EBA\u6226\u3067\u306E\u6280\u8853\u3068\u96C6\u4E2D\u529B\u306E\u52DD\u8CA0", icon: "sports_tennis" }
-        ].map((sport, index) => /* @__PURE__ */ jsxDEV8("div", { className: "flex-none w-56 sm:w-64 md:w-72", children: /* @__PURE__ */ jsxDEV8("div", { className: "bg-white border border-gray-200 rounded-xl p-3 md:p-4 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1", children: [
-          /* @__PURE__ */ jsxDEV8("div", { className: "relative w-full h-32 sm:h-36 md:h-40 mb-3 md:mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-blue-100 to-cyan-100", children: /* @__PURE__ */ jsxDEV8("div", { className: "absolute inset-0 flex items-center justify-center border-2 border-dashed border-gray-300", children: /* @__PURE__ */ jsxDEV8("div", { className: "text-center text-gray-500", children: [
-            /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-3xl md:text-4xl mb-1 md:mb-2", children: sport.icon }, void 0, !1, {
+      ballSports.length === 0 ? /* @__PURE__ */ jsxDEV8("div", { className: "text-center text-gray-500 py-8", children: /* @__PURE__ */ jsxDEV8("p", { children: "\u7403\u6280\u7A2E\u76EE\u306E\u60C5\u5831\u3092\u8AAD\u307F\u8FBC\u307F\u4E2D..." }, void 0, !1, {
+        fileName: "app/routes/_index.tsx",
+        lineNumber: 102,
+        columnNumber: 13
+      }, this) }, void 0, !1, {
+        fileName: "app/routes/_index.tsx",
+        lineNumber: 101,
+        columnNumber: 11
+      }, this) : /* @__PURE__ */ jsxDEV8("div", { className: "grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5", children: ballSports.map((sport) => /* @__PURE__ */ jsxDEV8(
+        Link5,
+        {
+          to: `/tournaments/${sport.id}`,
+          className: "group",
+          children: /* @__PURE__ */ jsxDEV8("div", { className: "bg-white border border-gray-200 rounded-xl p-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group-hover:border-amber-300", children: [
+            /* @__PURE__ */ jsxDEV8("div", { className: "flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 group-hover:from-amber-200 group-hover:to-orange-200 transition-all duration-300", children: /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-3xl text-amber-600 group-hover:text-amber-700 group-hover:scale-110 transition-all duration-300", children: getSportIcon(sport.name) }, void 0, !1, {
               fileName: "app/routes/_index.tsx",
-              lineNumber: 87,
-              columnNumber: 27
+              lineNumber: 115,
+              columnNumber: 21
+            }, this) }, void 0, !1, {
+              fileName: "app/routes/_index.tsx",
+              lineNumber: 114,
+              columnNumber: 19
             }, this),
-            /* @__PURE__ */ jsxDEV8("p", { className: "text-xs font-medium", children: [
-              sport.name,
-              "\u306E\u5199\u771F"
-            ] }, void 0, !0, {
-              fileName: "app/routes/_index.tsx",
-              lineNumber: 88,
-              columnNumber: 27
-            }, this),
-            /* @__PURE__ */ jsxDEV8("p", { className: "text-xs opacity-70 hidden sm:block", children: "\u753B\u50CF\u8FFD\u52A0\u4E88\u5B9A" }, void 0, !1, {
-              fileName: "app/routes/_index.tsx",
-              lineNumber: 89,
-              columnNumber: 27
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 86,
-            columnNumber: 25
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 85,
-            columnNumber: 23
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 84,
-            columnNumber: 21
-          }, this),
-          /* @__PURE__ */ jsxDEV8("div", { className: "space-y-2", children: [
-            /* @__PURE__ */ jsxDEV8("h3", { className: "font-semibold text-gray-900 text-base md:text-lg", children: sport.name }, void 0, !1, {
-              fileName: "app/routes/_index.tsx",
-              lineNumber: 105,
-              columnNumber: 23
-            }, this),
-            /* @__PURE__ */ jsxDEV8("p", { className: "text-xs md:text-sm text-gray-600 leading-relaxed line-clamp-2", children: sport.description }, void 0, !1, {
-              fileName: "app/routes/_index.tsx",
-              lineNumber: 106,
-              columnNumber: 23
-            }, this),
-            /* @__PURE__ */ jsxDEV8("div", { className: "flex items-center justify-between pt-1 md:pt-2", children: [
-              /* @__PURE__ */ jsxDEV8("span", { className: "text-xs text-blue-600 font-medium", children: "\u8A73\u7D30\u3092\u898B\u308B \u2192" }, void 0, !1, {
+            /* @__PURE__ */ jsxDEV8("div", { className: "text-center space-y-2", children: [
+              /* @__PURE__ */ jsxDEV8("h3", { className: "font-semibold text-gray-900 text-sm md:text-base group-hover:text-amber-700 transition-colors duration-300", children: sport.name }, void 0, !1, {
                 fileName: "app/routes/_index.tsx",
-                lineNumber: 108,
-                columnNumber: 25
+                lineNumber: 122,
+                columnNumber: 21
               }, this),
-              /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-base md:text-lg text-gray-400", children: sport.icon }, void 0, !1, {
+              /* @__PURE__ */ jsxDEV8("div", { className: "text-xs text-gray-600 space-y-1", children: [
+                /* @__PURE__ */ jsxDEV8("p", { children: [
+                  "\u{1F550} ",
+                  new Date(sport.schedule_time).toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" })
+                ] }, void 0, !0, {
+                  fileName: "app/routes/_index.tsx",
+                  lineNumber: 126,
+                  columnNumber: 23
+                }, this),
+                /* @__PURE__ */ jsxDEV8("p", { children: [
+                  "\u{1F4CD} ",
+                  sport.location
+                ] }, void 0, !0, {
+                  fileName: "app/routes/_index.tsx",
+                  lineNumber: 127,
+                  columnNumber: 23
+                }, this)
+              ] }, void 0, !0, {
                 fileName: "app/routes/_index.tsx",
-                lineNumber: 109,
-                columnNumber: 25
+                lineNumber: 125,
+                columnNumber: 21
+              }, this),
+              /* @__PURE__ */ jsxDEV8("div", { className: "pt-2", children: /* @__PURE__ */ jsxDEV8("span", { className: "text-xs text-amber-600 font-medium group-hover:text-amber-700", children: "\u30C8\u30FC\u30CA\u30E1\u30F3\u30C8\u8868 \u2192" }, void 0, !1, {
+                fileName: "app/routes/_index.tsx",
+                lineNumber: 130,
+                columnNumber: 23
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/_index.tsx",
+                lineNumber: 129,
+                columnNumber: 21
               }, this)
             ] }, void 0, !0, {
               fileName: "app/routes/_index.tsx",
-              lineNumber: 107,
-              columnNumber: 23
+              lineNumber: 121,
+              columnNumber: 19
             }, this)
           ] }, void 0, !0, {
             fileName: "app/routes/_index.tsx",
-            lineNumber: 104,
-            columnNumber: 21
+            lineNumber: 112,
+            columnNumber: 17
           }, this)
-        ] }, void 0, !0, {
+        },
+        sport.id,
+        !1,
+        {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 81,
-          columnNumber: 19
-        }, this) }, `${sport.name}-${arrayIndex}-${index}`, !1, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 80,
-          columnNumber: 17
-        }, this))
-      ) }, void 0, !1, {
+          lineNumber: 107,
+          columnNumber: 15
+        },
+        this
+      )) }, void 0, !1, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 70,
+        lineNumber: 105,
         columnNumber: 11
-      }, this) }, void 0, !1, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 68,
-        columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/_index.tsx",
-      lineNumber: 62,
+      lineNumber: 94,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ jsxDEV8("div", { "data-section": "sports-track", className: "bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl p-6 shadow-xl mb-8", children: [
       /* @__PURE__ */ jsxDEV8("h2", { className: "flex items-center text-xl font-semibold text-gray-900 mb-6", children: [
         /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-2xl mr-3 text-green-600 drop-shadow-sm", children: "directions_run" }, void 0, !1, {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 123,
+          lineNumber: 145,
           columnNumber: 11
         }, this),
         "\u7AF6\u6280\u7A2E\u76EE"
       ] }, void 0, !0, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 122,
+        lineNumber: 144,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ jsxDEV8("div", { className: "relative overflow-hidden", children: /* @__PURE__ */ jsxDEV8("div", { className: "flex gap-3 md:gap-4 scroll-container auto-scroll", children: [...Array(2)].map(
-        (_, arrayIndex) => [
-          { name: "100m\u8D70", description: "\u77ED\u8DDD\u96E2\u8D70\u306E\u738B\u9053\u3001\u77AC\u767A\u529B\u3068\u30B9\u30D4\u30FC\u30C9\u306E\u7AF6\u6280", icon: "directions_run" },
-          { name: "\u30EA\u30EC\u30FC", description: "\u30C1\u30FC\u30E0\u30EF\u30FC\u30AF\u304C\u52DD\u8CA0\u3092\u5206\u3051\u308B\u56E3\u4F53\u7AF6\u6280", icon: "group_work" },
-          { name: "\u8D70\u308A\u5E45\u8DF3\u3073", description: "\u52A9\u8D70\u304B\u3089\u306E\u30B8\u30E3\u30F3\u30D7\u3067\u8DDD\u96E2\u3092\u7AF6\u3046", icon: "sports" },
-          { name: "\u7DB1\u5F15\u304D", description: "\u529B\u3068\u606F\u3092\u5408\u308F\u305B\u305F\u30C1\u30FC\u30E0\u6226", icon: "fitness_center" },
-          { name: "\u9A0E\u99AC\u6226", description: "\u4F1D\u7D71\u7684\u306A\u4F53\u80B2\u796D\u306E\u82B1\u5F62\u7AF6\u6280", icon: "groups" }
-        ].map((sport, index) => /* @__PURE__ */ jsxDEV8("div", { className: "flex-none w-56 sm:w-64 md:w-72", children: /* @__PURE__ */ jsxDEV8("div", { className: "bg-white border border-gray-200 rounded-xl p-3 md:p-4 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1", children: [
-          /* @__PURE__ */ jsxDEV8("div", { className: "relative w-full h-32 sm:h-36 md:h-40 mb-3 md:mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-green-100 to-emerald-100", children: /* @__PURE__ */ jsxDEV8("div", { className: "absolute inset-0 flex items-center justify-center border-2 border-dashed border-gray-300", children: /* @__PURE__ */ jsxDEV8("div", { className: "text-center text-gray-500", children: [
-            /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-3xl md:text-4xl mb-1 md:mb-2", children: sport.icon }, void 0, !1, {
-              fileName: "app/routes/_index.tsx",
-              lineNumber: 146,
-              columnNumber: 27
-            }, this),
-            /* @__PURE__ */ jsxDEV8("p", { className: "text-xs font-medium", children: [
-              sport.name,
-              "\u306E\u5199\u771F"
-            ] }, void 0, !0, {
-              fileName: "app/routes/_index.tsx",
-              lineNumber: 147,
-              columnNumber: 27
-            }, this),
-            /* @__PURE__ */ jsxDEV8("p", { className: "text-xs opacity-70 hidden sm:block", children: "\u753B\u50CF\u8FFD\u52A0\u4E88\u5B9A" }, void 0, !1, {
-              fileName: "app/routes/_index.tsx",
-              lineNumber: 148,
-              columnNumber: 27
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 145,
-            columnNumber: 25
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 144,
-            columnNumber: 23
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 143,
-            columnNumber: 21
-          }, this),
-          /* @__PURE__ */ jsxDEV8("div", { className: "space-y-2", children: [
-            /* @__PURE__ */ jsxDEV8("h3", { className: "font-semibold text-gray-900 text-base md:text-lg", children: sport.name }, void 0, !1, {
+      trackEvents.length === 0 ? /* @__PURE__ */ jsxDEV8("div", { className: "text-center text-gray-500 py-8", children: /* @__PURE__ */ jsxDEV8("p", { children: "\u7AF6\u6280\u7A2E\u76EE\u306E\u60C5\u5831\u3092\u8AAD\u307F\u8FBC\u307F\u4E2D..." }, void 0, !1, {
+        fileName: "app/routes/_index.tsx",
+        lineNumber: 151,
+        columnNumber: 13
+      }, this) }, void 0, !1, {
+        fileName: "app/routes/_index.tsx",
+        lineNumber: 150,
+        columnNumber: 11
+      }, this) : /* @__PURE__ */ jsxDEV8("div", { className: "grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6", children: trackEvents.map((sport) => /* @__PURE__ */ jsxDEV8(
+        Link5,
+        {
+          to: `/tournaments/${sport.id}`,
+          className: "group",
+          children: /* @__PURE__ */ jsxDEV8("div", { className: "bg-white border border-gray-200 rounded-xl p-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group-hover:border-green-300", children: [
+            /* @__PURE__ */ jsxDEV8("div", { className: "flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-green-100 to-emerald-100 group-hover:from-green-200 group-hover:to-emerald-200 transition-all duration-300", children: /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-3xl text-green-600 group-hover:text-green-700 group-hover:scale-110 transition-all duration-300", children: getSportIcon(sport.name) }, void 0, !1, {
               fileName: "app/routes/_index.tsx",
               lineNumber: 164,
-              columnNumber: 23
-            }, this),
-            /* @__PURE__ */ jsxDEV8("p", { className: "text-xs md:text-sm text-gray-600 leading-relaxed line-clamp-2", children: sport.description }, void 0, !1, {
+              columnNumber: 21
+            }, this) }, void 0, !1, {
               fileName: "app/routes/_index.tsx",
-              lineNumber: 165,
-              columnNumber: 23
+              lineNumber: 163,
+              columnNumber: 19
             }, this),
-            /* @__PURE__ */ jsxDEV8("div", { className: "flex items-center justify-between pt-1 md:pt-2", children: [
-              /* @__PURE__ */ jsxDEV8("span", { className: "text-xs text-green-600 font-medium", children: "\u8A73\u7D30\u3092\u898B\u308B \u2192" }, void 0, !1, {
+            /* @__PURE__ */ jsxDEV8("div", { className: "text-center space-y-2", children: [
+              /* @__PURE__ */ jsxDEV8("h3", { className: "font-semibold text-gray-900 text-sm md:text-base group-hover:text-green-700 transition-colors duration-300", children: sport.name }, void 0, !1, {
                 fileName: "app/routes/_index.tsx",
-                lineNumber: 167,
-                columnNumber: 25
+                lineNumber: 171,
+                columnNumber: 21
               }, this),
-              /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-base md:text-lg text-gray-400", children: sport.icon }, void 0, !1, {
+              /* @__PURE__ */ jsxDEV8("div", { className: "text-xs text-gray-600 space-y-1", children: [
+                /* @__PURE__ */ jsxDEV8("p", { children: [
+                  "\u{1F550} ",
+                  new Date(sport.schedule_time).toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" })
+                ] }, void 0, !0, {
+                  fileName: "app/routes/_index.tsx",
+                  lineNumber: 175,
+                  columnNumber: 23
+                }, this),
+                /* @__PURE__ */ jsxDEV8("p", { children: [
+                  "\u{1F4CD} ",
+                  sport.location
+                ] }, void 0, !0, {
+                  fileName: "app/routes/_index.tsx",
+                  lineNumber: 176,
+                  columnNumber: 23
+                }, this)
+              ] }, void 0, !0, {
                 fileName: "app/routes/_index.tsx",
-                lineNumber: 168,
-                columnNumber: 25
+                lineNumber: 174,
+                columnNumber: 21
+              }, this),
+              /* @__PURE__ */ jsxDEV8("div", { className: "pt-2", children: /* @__PURE__ */ jsxDEV8("span", { className: "text-xs text-green-600 font-medium group-hover:text-green-700", children: "\u30C8\u30FC\u30CA\u30E1\u30F3\u30C8\u8868 \u2192" }, void 0, !1, {
+                fileName: "app/routes/_index.tsx",
+                lineNumber: 179,
+                columnNumber: 23
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/_index.tsx",
+                lineNumber: 178,
+                columnNumber: 21
               }, this)
             ] }, void 0, !0, {
               fileName: "app/routes/_index.tsx",
-              lineNumber: 166,
-              columnNumber: 23
+              lineNumber: 170,
+              columnNumber: 19
             }, this)
           ] }, void 0, !0, {
             fileName: "app/routes/_index.tsx",
-            lineNumber: 163,
-            columnNumber: 21
+            lineNumber: 161,
+            columnNumber: 17
           }, this)
-        ] }, void 0, !0, {
+        },
+        sport.id,
+        !1,
+        {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 140,
-          columnNumber: 19
-        }, this) }, `${sport.name}-${arrayIndex}-${index}`, !1, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 139,
-          columnNumber: 17
-        }, this))
-      ) }, void 0, !1, {
+          lineNumber: 156,
+          columnNumber: 15
+        },
+        this
+      )) }, void 0, !1, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 129,
+        lineNumber: 154,
         columnNumber: 11
-      }, this) }, void 0, !1, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 127,
-        columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/_index.tsx",
-      lineNumber: 121,
+      lineNumber: 143,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ jsxDEV8("div", { "data-section": "access", className: "bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl p-4 md:p-6 shadow-xl", children: [
       /* @__PURE__ */ jsxDEV8("h2", { className: "flex items-center text-lg md:text-xl font-semibold text-gray-900 mb-4", children: [
         /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-xl md:text-2xl mr-2 md:mr-3 text-red-600 drop-shadow-sm", children: "location_on" }, void 0, !1, {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 181,
+          lineNumber: 193,
           columnNumber: 11
         }, this),
         "\u30A2\u30AF\u30BB\u30B9\u30FB\u4F1A\u5834\u6848\u5185"
       ] }, void 0, !0, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 180,
+        lineNumber: 192,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ jsxDEV8("div", { className: "mb-4 rounded-lg overflow-hidden shadow-md", children: /* @__PURE__ */ jsxDEV8("div", { className: "w-full h-48 sm:h-56 md:h-64 bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center border-2 border-dashed border-gray-300", children: /* @__PURE__ */ jsxDEV8("div", { className: "text-center text-gray-600 px-4", children: [
         /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-3xl md:text-4xl mb-2 text-gray-500", children: "map" }, void 0, !1, {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 190,
+          lineNumber: 202,
           columnNumber: 15
         }, this),
         /* @__PURE__ */ jsxDEV8("p", { className: "text-xs md:text-sm font-medium", children: "Google Maps \u304C\u3053\u3053\u306B\u8868\u793A\u3055\u308C\u307E\u3059" }, void 0, !1, {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 191,
+          lineNumber: 203,
           columnNumber: 15
         }, this),
         /* @__PURE__ */ jsxDEV8("p", { className: "text-xs opacity-70 mt-1 hidden sm:block", children: "\u5B9F\u969B\u306E\u30DE\u30C3\u30D7\u3092\u57CB\u3081\u8FBC\u3080\u969B\u306F\u3053\u306E\u30D7\u30EC\u30FC\u30B9\u30DB\u30EB\u30C0\u30FC\u3092\u7F6E\u304D\u63DB\u3048\u3066\u304F\u3060\u3055\u3044" }, void 0, !1, {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 192,
+          lineNumber: 204,
           columnNumber: 15
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 189,
+        lineNumber: 201,
         columnNumber: 13
       }, this) }, void 0, !1, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 188,
+        lineNumber: 200,
         columnNumber: 11
       }, this) }, void 0, !1, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 186,
+        lineNumber: 198,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ jsxDEV8("div", { className: "space-y-3 md:space-y-4", children: [
         /* @__PURE__ */ jsxDEV8("div", { className: "flex items-start text-xs md:text-sm text-gray-700", children: [
           /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-base md:text-lg mr-2 md:mr-3 mt-0.5 text-red-500 flex-shrink-0", children: "directions_transit" }, void 0, !1, {
             fileName: "app/routes/_index.tsx",
-            lineNumber: 214,
+            lineNumber: 226,
             columnNumber: 13
           }, this),
           /* @__PURE__ */ jsxDEV8("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxDEV8("p", { className: "font-medium", children: "\u96FB\u8ECA\u3067\u304A\u8D8A\u3057\u306E\u5834\u5408" }, void 0, !1, {
               fileName: "app/routes/_index.tsx",
-              lineNumber: 216,
+              lineNumber: 228,
               columnNumber: 15
             }, this),
             /* @__PURE__ */ jsxDEV8("p", { className: "text-xs text-gray-600 mt-1", children: "\u25CB\u25CB\u99C5\u304B\u3089\u5F92\u6B6910\u5206" }, void 0, !1, {
               fileName: "app/routes/_index.tsx",
-              lineNumber: 217,
+              lineNumber: 229,
               columnNumber: 15
             }, this)
           ] }, void 0, !0, {
             fileName: "app/routes/_index.tsx",
-            lineNumber: 215,
+            lineNumber: 227,
             columnNumber: 13
           }, this)
         ] }, void 0, !0, {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 213,
+          lineNumber: 225,
           columnNumber: 11
         }, this),
         /* @__PURE__ */ jsxDEV8("div", { className: "flex items-start text-xs md:text-sm text-gray-700", children: [
           /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-base md:text-lg mr-2 md:mr-3 mt-0.5 text-blue-500 flex-shrink-0", children: "directions_car" }, void 0, !1, {
             fileName: "app/routes/_index.tsx",
-            lineNumber: 221,
+            lineNumber: 233,
             columnNumber: 13
           }, this),
           /* @__PURE__ */ jsxDEV8("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxDEV8("p", { className: "font-medium", children: "\u304A\u8ECA\u3067\u304A\u8D8A\u3057\u306E\u5834\u5408" }, void 0, !1, {
               fileName: "app/routes/_index.tsx",
-              lineNumber: 223,
+              lineNumber: 235,
               columnNumber: 15
             }, this),
             /* @__PURE__ */ jsxDEV8("p", { className: "text-xs text-gray-600 mt-1", children: "\u6821\u5185\u99D0\u8ECA\u5834\u3092\u3054\u5229\u7528\u304F\u3060\u3055\u3044" }, void 0, !1, {
               fileName: "app/routes/_index.tsx",
-              lineNumber: 224,
+              lineNumber: 236,
               columnNumber: 15
             }, this)
           ] }, void 0, !0, {
             fileName: "app/routes/_index.tsx",
-            lineNumber: 222,
+            lineNumber: 234,
             columnNumber: 13
           }, this)
         ] }, void 0, !0, {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 220,
+          lineNumber: 232,
           columnNumber: 11
         }, this),
         /* @__PURE__ */ jsxDEV8("div", { className: "flex items-start text-xs md:text-sm text-gray-700", children: [
           /* @__PURE__ */ jsxDEV8("span", { className: "material-icons text-base md:text-lg mr-2 md:mr-3 mt-0.5 text-green-500 flex-shrink-0", children: "info" }, void 0, !1, {
             fileName: "app/routes/_index.tsx",
-            lineNumber: 228,
+            lineNumber: 240,
             columnNumber: 13
           }, this),
           /* @__PURE__ */ jsxDEV8("div", { className: "min-w-0 flex-1", children: [
             /* @__PURE__ */ jsxDEV8("p", { className: "font-medium", children: "\u6CE8\u610F\u4E8B\u9805" }, void 0, !1, {
               fileName: "app/routes/_index.tsx",
-              lineNumber: 230,
+              lineNumber: 242,
               columnNumber: 15
             }, this),
             /* @__PURE__ */ jsxDEV8("p", { className: "text-xs text-gray-600 mt-1", children: "\u5F53\u65E5\u306F\u6DF7\u96D1\u304C\u4E88\u60F3\u3055\u308C\u307E\u3059\u3002\u516C\u5171\u4EA4\u901A\u6A5F\u95A2\u306E\u3054\u5229\u7528\u3092\u304A\u52E7\u3081\u3057\u307E\u3059" }, void 0, !1, {
               fileName: "app/routes/_index.tsx",
-              lineNumber: 231,
+              lineNumber: 243,
               columnNumber: 15
             }, this)
           ] }, void 0, !0, {
             fileName: "app/routes/_index.tsx",
-            lineNumber: 229,
+            lineNumber: 241,
             columnNumber: 13
           }, this)
         ] }, void 0, !0, {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 227,
+          lineNumber: 239,
           columnNumber: 11
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 212,
+        lineNumber: 224,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/_index.tsx",
-      lineNumber: 179,
+      lineNumber: 191,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/_index.tsx",
-    lineNumber: 6,
+    lineNumber: 38,
     columnNumber: 5
   }, this);
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-RPVQKHN2.js", imports: ["/build/_shared/chunk-O4BRYNJ4.js", "/build/_shared/chunk-6XMTRBRU.js", "/build/_shared/chunk-KMHXRZOJ.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-XGOTYLZ5.js", "/build/_shared/chunk-U4FRFQSK.js", "/build/_shared/chunk-7M6SC7J5.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-YHAYPKCT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-U4B5AWCN.js", imports: ["/build/_shared/chunk-KNFBFO7B.js"], hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/events._index": { id: "routes/events._index", parentId: "root", path: "events", index: !0, caseSensitive: void 0, module: "/build/routes/events._index-PM6LERLC.js", imports: ["/build/_shared/chunk-G7CHZRZX.js", "/build/_shared/chunk-KNFBFO7B.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tournaments.$eventId": { id: "routes/tournaments.$eventId", parentId: "root", path: "tournaments/:eventId", index: void 0, caseSensitive: void 0, module: "/build/routes/tournaments.$eventId-3TF4VPZT.js", imports: ["/build/_shared/chunk-G7CHZRZX.js", "/build/_shared/chunk-KNFBFO7B.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "35e5dc06", hmr: { runtime: "/build/_shared/chunk-KMHXRZOJ.js", timestamp: 1758379310840 }, url: "/build/manifest-35E5DC06.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-IAEWMYW2.js", imports: ["/build/_shared/chunk-O4BRYNJ4.js", "/build/_shared/chunk-S3VR4VJ3.js", "/build/_shared/chunk-WMDNZPIO.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-XGOTYLZ5.js", "/build/_shared/chunk-U4FRFQSK.js", "/build/_shared/chunk-7M6SC7J5.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-KEDB7G5G.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-GW4DF5OB.js", imports: ["/build/_shared/chunk-JTW6BXBA.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/events._index": { id: "routes/events._index", parentId: "root", path: "events", index: !0, caseSensitive: void 0, module: "/build/routes/events._index-NMMETFD2.js", imports: ["/build/_shared/chunk-G7CHZRZX.js", "/build/_shared/chunk-JTW6BXBA.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tournaments.$eventId": { id: "routes/tournaments.$eventId", parentId: "root", path: "tournaments/:eventId", index: void 0, caseSensitive: void 0, module: "/build/routes/tournaments.$eventId-DEUAHN3R.js", imports: ["/build/_shared/chunk-G7CHZRZX.js", "/build/_shared/chunk-JTW6BXBA.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "62fbcc6c", hmr: { runtime: "/build/_shared/chunk-WMDNZPIO.js", timestamp: 1758410531604 }, url: "/build/manifest-62FBCC6C.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "development", assetsBuildDirectory = "public/build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, v3_routeConfig: !1, v3_singleFetch: !1, v3_lazyRouteDiscovery: !1, unstable_optimizeDeps: !1 }, publicPath = "/build/", entry = { module: entry_server_node_exports }, routes = {

@@ -1,7 +1,39 @@
-import { Link } from "@remix-run/react";
+import { useLoaderData, Link } from "@remix-run/react";
 import Layout from "~/components/Layout";
+import { fetchEvents } from "~/utils/api";
+
+export async function loader() {
+  try {
+    const events = await fetchEvents();
+    const ballSports = events.filter(event => event.id <= 5);
+    const trackEvents = events.filter(event => event.id >= 6);
+    return { ballSports, trackEvents };
+  } catch (error) {
+    console.error('Error loading events:', error);
+    return { ballSports: [], trackEvents: [] };
+  }
+}
 
 export default function Index() {
+  const { ballSports, trackEvents } = useLoaderData<typeof loader>();
+
+  const getSportIcon = (name: string) => {
+    const iconMap: { [key: string]: string } = {
+      'バスケットボール': 'sports_basketball',
+      'バレーボール': 'sports_volleyball',
+      'ソフトボール': 'sports_baseball',
+      'サッカー': 'sports_soccer',
+      'ソフトテニス': 'sports_tennis',
+      '障害物競走': 'directions_run',
+      '大リレー': 'group_work',
+      '借り人競争': 'search',
+      '○人×脚': 'group',
+      '大綱引き': 'fitness_center',
+      'パン食い競争': 'restaurant'
+    };
+    return iconMap[name] || 'sports';
+  };
+
   return (
     <Layout title="">
       {/* Hero Image Section - 校庭の写真用 */}
@@ -47,7 +79,7 @@ export default function Index() {
             競技スケジュール
           </h2>
           <p className="text-gray-700 mb-4 md:mb-6 text-xs md:text-sm leading-relaxed">
-            各競技の開始時間と開催場所を確認できます。
+            各競技の開始時間と開催場所を確認できます。下記の球技・競技タイルからも直接トーナメント表にアクセスできます。
           </p>
           <Link
             to="/events"
@@ -58,122 +90,102 @@ export default function Index() {
         </div>
       </div>
 
-      {/* 球技種目ギャラリー */}
+      {/* 球技種目 */}
       <div data-section="sports-ball" className="bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl p-6 shadow-xl mb-8">
         <h2 className="flex items-center text-xl font-semibold text-gray-900 mb-6">
           <span className="material-icons text-2xl mr-3 text-amber-600 drop-shadow-sm">sports_basketball</span>
           球技種目
         </h2>
 
-        <div className="relative overflow-hidden">
-          {/* 横スクロールコンテナ - 無限ループ */}
-          <div className="flex gap-3 md:gap-4 scroll-container auto-scroll">
-            {/* 球技カード - 2回繰り返してループ効果 */}
-            {[...Array(2)].map((_, arrayIndex) =>
-              [
-                { name: "バスケットボール", description: "チーム戦での熱い戦いが繰り広げられます", icon: "sports_basketball" },
-                { name: "サッカー", description: "グラウンドを駆け抜ける白熱した試合", icon: "sports_soccer" },
-                { name: "バレーボール", description: "ネットを挟んでのパワフルな攻防", icon: "sports_volleyball" },
-                { name: "ドッジボール", description: "俊敏性と戦略が求められる人気競技", icon: "sports_handball" },
-                { name: "テニス", description: "個人戦での技術と集中力の勝負", icon: "sports_tennis" }
-              ].map((sport, index) => (
-                <div key={`${sport.name}-${arrayIndex}-${index}`} className="flex-none w-56 sm:w-64 md:w-72">
-                  <div className="bg-white border border-gray-200 rounded-xl p-3 md:p-4 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+        {ballSports.length === 0 ? (
+          <div className="text-center text-gray-500 py-8">
+            <p>球技種目の情報を読み込み中...</p>
+          </div>
+        ) : (
+          <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {ballSports.map((sport) => (
+              <Link
+                key={sport.id}
+                to={`/tournaments/${sport.id}`}
+                className="group"
+              >
+                <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group-hover:border-amber-300">
+                  {/* アイコンエリア */}
+                  <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 group-hover:from-amber-200 group-hover:to-orange-200 transition-all duration-300">
+                    <span className={`material-icons text-3xl text-amber-600 group-hover:text-amber-700 group-hover:scale-110 transition-all duration-300`}>
+                      {getSportIcon(sport.name)}
+                    </span>
+                  </div>
 
-                    {/* 写真エリア - プレースホルダー */}
-                    <div className="relative w-full h-32 sm:h-36 md:h-40 mb-3 md:mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-blue-100 to-cyan-100">
-                      <div className="absolute inset-0 flex items-center justify-center border-2 border-dashed border-gray-300">
-                        <div className="text-center text-gray-500">
-                          <span className={`material-icons text-3xl md:text-4xl mb-1 md:mb-2`}>{sport.icon}</span>
-                          <p className="text-xs font-medium">{sport.name}の写真</p>
-                          <p className="text-xs opacity-70 hidden sm:block">画像追加予定</p>
-                        </div>
-                      </div>
-
-                      {/* 実際の画像（コメントアウト） */}
-                      {/*
-                      <img
-                        src={`/images/sports/${sport.name.toLowerCase()}.jpg`}
-                        alt={`${sport.name}の様子`}
-                        className="w-full h-full object-cover"
-                      />
-                      */}
+                  {/* 種目情報 */}
+                  <div className="text-center space-y-2">
+                    <h3 className="font-semibold text-gray-900 text-sm md:text-base group-hover:text-amber-700 transition-colors duration-300">
+                      {sport.name}
+                    </h3>
+                    <div className="text-xs text-gray-600 space-y-1">
+                      <p>🕐 {new Date(sport.schedule_time).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}</p>
+                      <p>📍 {sport.location}</p>
                     </div>
-
-                    {/* 種目情報 */}
-                    <div className="space-y-2">
-                      <h3 className="font-semibold text-gray-900 text-base md:text-lg">{sport.name}</h3>
-                      <p className="text-xs md:text-sm text-gray-600 leading-relaxed line-clamp-2">{sport.description}</p>
-                      <div className="flex items-center justify-between pt-1 md:pt-2">
-                        <span className="text-xs text-blue-600 font-medium">詳細を見る →</span>
-                        <span className={`material-icons text-base md:text-lg text-gray-400`}>{sport.icon}</span>
-                      </div>
+                    <div className="pt-2">
+                      <span className="text-xs text-amber-600 font-medium group-hover:text-amber-700">
+                        トーナメント表 →
+                      </span>
                     </div>
                   </div>
                 </div>
-              ))
-            )}
+              </Link>
+            ))}
           </div>
-        </div>
+        )}
       </div>
 
-      {/* 競技種目ギャラリー */}
+      {/* 競技種目 */}
       <div data-section="sports-track" className="bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl p-6 shadow-xl mb-8">
         <h2 className="flex items-center text-xl font-semibold text-gray-900 mb-6">
           <span className="material-icons text-2xl mr-3 text-green-600 drop-shadow-sm">directions_run</span>
           競技種目
         </h2>
 
-        <div className="relative overflow-hidden">
-          {/* 横スクロールコンテナ - 無限ループ */}
-          <div className="flex gap-3 md:gap-4 scroll-container auto-scroll">
-            {/* 競技カード - 2回繰り返してループ効果 */}
-            {[...Array(2)].map((_, arrayIndex) =>
-              [
-                { name: "100m走", description: "短距離走の王道、瞬発力とスピードの競技", icon: "directions_run" },
-                { name: "リレー", description: "チームワークが勝負を分ける団体競技", icon: "group_work" },
-                { name: "走り幅跳び", description: "助走からのジャンプで距離を競う", icon: "sports" },
-                { name: "綱引き", description: "力と息を合わせたチーム戦", icon: "fitness_center" },
-                { name: "騎馬戦", description: "伝統的な体育祭の花形競技", icon: "groups" }
-              ].map((sport, index) => (
-                <div key={`${sport.name}-${arrayIndex}-${index}`} className="flex-none w-56 sm:w-64 md:w-72">
-                  <div className="bg-white border border-gray-200 rounded-xl p-3 md:p-4 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+        {trackEvents.length === 0 ? (
+          <div className="text-center text-gray-500 py-8">
+            <p>競技種目の情報を読み込み中...</p>
+          </div>
+        ) : (
+          <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+            {trackEvents.map((sport) => (
+              <Link
+                key={sport.id}
+                to={`/tournaments/${sport.id}`}
+                className="group"
+              >
+                <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group-hover:border-green-300">
+                  {/* アイコンエリア */}
+                  <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-green-100 to-emerald-100 group-hover:from-green-200 group-hover:to-emerald-200 transition-all duration-300">
+                    <span className={`material-icons text-3xl text-green-600 group-hover:text-green-700 group-hover:scale-110 transition-all duration-300`}>
+                      {getSportIcon(sport.name)}
+                    </span>
+                  </div>
 
-                    {/* 写真エリア - プレースホルダー */}
-                    <div className="relative w-full h-32 sm:h-36 md:h-40 mb-3 md:mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-green-100 to-emerald-100">
-                      <div className="absolute inset-0 flex items-center justify-center border-2 border-dashed border-gray-300">
-                        <div className="text-center text-gray-500">
-                          <span className={`material-icons text-3xl md:text-4xl mb-1 md:mb-2`}>{sport.icon}</span>
-                          <p className="text-xs font-medium">{sport.name}の写真</p>
-                          <p className="text-xs opacity-70 hidden sm:block">画像追加予定</p>
-                        </div>
-                      </div>
-
-                      {/* 実際の画像（コメントアウト） */}
-                      {/*
-                      <img
-                        src={`/images/sports/${sport.name.toLowerCase()}.jpg`}
-                        alt={`${sport.name}の様子`}
-                        className="w-full h-full object-cover"
-                      />
-                      */}
+                  {/* 種目情報 */}
+                  <div className="text-center space-y-2">
+                    <h3 className="font-semibold text-gray-900 text-sm md:text-base group-hover:text-green-700 transition-colors duration-300">
+                      {sport.name}
+                    </h3>
+                    <div className="text-xs text-gray-600 space-y-1">
+                      <p>🕐 {new Date(sport.schedule_time).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}</p>
+                      <p>📍 {sport.location}</p>
                     </div>
-
-                    {/* 種目情報 */}
-                    <div className="space-y-2">
-                      <h3 className="font-semibold text-gray-900 text-base md:text-lg">{sport.name}</h3>
-                      <p className="text-xs md:text-sm text-gray-600 leading-relaxed line-clamp-2">{sport.description}</p>
-                      <div className="flex items-center justify-between pt-1 md:pt-2">
-                        <span className="text-xs text-green-600 font-medium">詳細を見る →</span>
-                        <span className={`material-icons text-base md:text-lg text-gray-400`}>{sport.icon}</span>
-                      </div>
+                    <div className="pt-2">
+                      <span className="text-xs text-green-600 font-medium group-hover:text-green-700">
+                        トーナメント表 →
+                      </span>
                     </div>
                   </div>
                 </div>
-              ))
-            )}
+              </Link>
+            ))}
           </div>
-        </div>
+        )}
       </div>
 
       <div data-section="access" className="bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl p-4 md:p-6 shadow-xl">
